@@ -59,9 +59,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
     DatabaseReference database = null;
     DailyDB dailydb = null;
 
-    // 카테고리 이름을 담기 위한 String ArrayList
-    ArrayList<String> list = new ArrayList<>();
-
     Calendar cal;
 
     // 새로운 TodoAddedDialog 생성 및 return
@@ -83,30 +80,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
             // todo_popup layout과 spinner layout 받아옴
             View v = inflater.inflate(R.layout.todo_popup, container, false);
             spinner = (Spinner) v.findViewById(R.id.category_spinner);
-
-            // 사용자 카테고리 생성을 위해 addValueEventListener 구현
-            database.child("category").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    // 추가된 카테고리가 없을 경우 기본 카테고리 제공
-                    if(!snapshot.exists()){
-                        list.add("미정");
-                        list.add("공부");
-                        list.add("과제");
-                        list.add("운동");
-                    }else {
-                        for (DataSnapshot childData : snapshot.getChildren()) {
-                            categoryDB currData = childData.getValue(categoryDB.class);
-                            list.add(currData.categoryName);
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
 
             ArrayAdapter<CharSequence> adapterArray = ArrayAdapter.createFromResource(v.getContext(), R.array.category_list, android.R.layout.simple_spinner_item);
             adapterArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -130,30 +103,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
             View v = inflater.inflate(R.layout.todo_popup, container, false);
             spinner = (Spinner) v.findViewById(R.id.category_spinner);
 
-            // 사용자 카테고리 생성을 위해 addValueEventListener 구현
-            database.child("category").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    // 추가된 카테고리가 없을 경우 기본 카테고리 제공
-                    if(!snapshot.exists()){
-                        list.add("미정");
-                        list.add("공부");
-                        list.add("과제");
-                        list.add("운동");
-                    }else {
-                        for (DataSnapshot childData : snapshot.getChildren()) {
-                            categoryDB currData = childData.getValue(categoryDB.class);
-                            list.add(currData.categoryName);
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
             ArrayAdapter<CharSequence> adapterArray = ArrayAdapter.createFromResource(v.getContext(), R.array.category_list, android.R.layout.simple_spinner_item);
             adapterArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapterArray);
@@ -171,8 +120,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                 @Override
                 public void onClick(View v) {
                     database.child("daily").child(Long.toString(getArguments().getLong("dateLong"))).child(Integer.toString(getArguments().getInt("timeline"))).child(getArguments().getString("createdDate")).removeValue();
-
-                    Toast.makeText(v.getContext(), "삭제되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                 }
             });
@@ -243,7 +190,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("0").child(cal.getTime().toString()).setValue(dailydb);
 
-                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     }
@@ -257,7 +203,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("1").child(cal.getTime().toString()).setValue(dailydb);
 
-                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     } else if (timeGroup.getCheckedRadioButtonId() == R.id.time3){
@@ -269,8 +214,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.catalog = spinner.getSelectedItem().toString();
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("2").child(cal.getTime().toString()).setValue(dailydb);
-
-                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     }
@@ -287,7 +230,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("0").child(cal.getTime().toString()).setValue(dailydb);
 
-                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 }
@@ -301,7 +243,6 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("1").child(cal.getTime().toString()).setValue(dailydb);
 
-                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 } else if (timeGroup.getCheckedRadioButtonId() == R.id.time3){
@@ -313,14 +254,11 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.catalog = spinner.getSelectedItem().toString();
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("2").child(cal.getTime().toString()).setValue(dailydb);
-
-                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 }
 
             case R.id.bt_cancel: //취소 버튼을 눌렀을 때
-                Toast.makeText(v.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
                 dismiss();
                 break;
         }
