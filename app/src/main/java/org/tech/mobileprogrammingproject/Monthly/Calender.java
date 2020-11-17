@@ -123,20 +123,25 @@ public class Calender extends AppCompatActivity {
 
                                 TextView textview1 = new TextView(getApplicationContext());
                                 textview1.setText(currMonDB.content);
-                                textview1.setGravity(Gravity.CENTER);
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                                params.weight = 1.0f;
-                                textview1.setLayoutParams(params);
+                                textview1.setGravity(Gravity.CENTER_VERTICAL);
+                                textview1.setPadding(60, 0, 0, 0);
+                                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+                                params1.weight = 0.45f;
+                                textview1.setLayoutParams(params1);
 
                                 TextView textview2 = new TextView(getApplicationContext());
                                 Date presentDate = new Date(currMonDB.endPoint);
-                                textview2.setText((presentDate.getYear() - 100) + "년 " +  (presentDate.getMonth() + 1) + "월 " + presentDate.getDate()+"일");
+                                textview2.setText((presentDate.getYear() - 100) + "년 " +  (presentDate.getMonth() + 1) + "월 " + presentDate.getDate()+"일   ");
                                 textview2.setGravity(Gravity.CENTER);
-                                textview2.setLayoutParams(params);
+                                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+                                params2.weight = 0.35f;
+                                textview2.setLayoutParams(params2);
 
                                 CheckBox cb = new CheckBox(getApplicationContext());
                                 cb.setGravity(Gravity.CENTER);
-                                cb.setLayoutParams(params);
+                                LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+                                params3.weight = 0.1f;
+                                cb.setLayoutParams(params3);
                                 cb.setId(itemIDArray.size() - 1);
                                 cb.setOnClickListener(new View.OnClickListener() {
                                     @Override
