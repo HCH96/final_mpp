@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:text="시간" />
+            android:text="3분할" />
 
         <RadioGroup
             android:id="@+id/time_group"
@@ -80,21 +80,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="아침" />
+                android:text="Group 1" />
 
             <RadioButton
                 android:id="@+id/time2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="점심" />
+                android:text="Group 2" />
 
             <RadioButton
                 android:id="@+id/time3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="저녁" />
+                android:text="Group 3" />
 
         </RadioGroup>
 
