@@ -196,14 +196,6 @@ public class Status extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
-                DailyDB cancelDb = new DailyDB();
-                cancelDb.createDate = createdDate;
-                cancelDb.content = content;
-                cancelDb.state = 0;
-                cancelDb.timeline = timeline;
-                cancelDb.catalog = catalog;
-                cancelDb.date = dateLong;
-
                 dismiss();
             }
         });
@@ -296,6 +288,7 @@ public class Status extends DialogFragment {
                     database.child("daily").child(Long.toString(timeUpdateDb.date)).child("3").child(timeUpdateDb.createDate).removeValue();
                     database.child("daily").child(Long.toString(timeUpdateDb.date)).child("3").child(timeUpdateDb.createDate).setValue(timeUpdateDb);
 
+                    Toast.makeText(v.getContext(), "할 일을 완료하였습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                 } else {
                     // 시간 정보가 제대로 된 경우 업데이트
@@ -337,6 +330,7 @@ public class Status extends DialogFragment {
                         database.child("daily").child(Long.toString(timeUpdateDb.date)).child("3").child(timeUpdateDb.createDate).removeValue();
                         database.child("daily").child(Long.toString(timeUpdateDb.date)).child("3").child(timeUpdateDb.createDate).setValue(timeUpdateDb);
 
+                        Toast.makeText(v.getContext(), "할 일을 완료하였습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                     }
                 }

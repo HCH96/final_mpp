@@ -171,6 +171,8 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                 @Override
                 public void onClick(View v) {
                     database.child("daily").child(Long.toString(getArguments().getLong("dateLong"))).child(Integer.toString(getArguments().getInt("timeline"))).child(getArguments().getString("createdDate")).removeValue();
+
+                    Toast.makeText(v.getContext(), "삭제되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                 }
             });
@@ -241,6 +243,7 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("0").child(cal.getTime().toString()).setValue(dailydb);
 
+                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     }
@@ -254,6 +257,7 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("1").child(cal.getTime().toString()).setValue(dailydb);
 
+                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     } else if (timeGroup.getCheckedRadioButtonId() == R.id.time3){
@@ -265,6 +269,8 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                         dailydb.catalog = spinner.getSelectedItem().toString();
                         dailydb.date = getArguments().getLong("dateLong");
                         database.child("daily").child(Long.toString(dailydb.date)).child("2").child(cal.getTime().toString()).setValue(dailydb);
+
+                        Toast.makeText(v.getContext(), "수정되었습니다.", Toast.LENGTH_LONG).show();
                         dismiss();
                         break;
                     }
@@ -281,6 +287,7 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("0").child(cal.getTime().toString()).setValue(dailydb);
 
+                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 }
@@ -294,6 +301,7 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("1").child(cal.getTime().toString()).setValue(dailydb);
 
+                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 } else if (timeGroup.getCheckedRadioButtonId() == R.id.time3){
@@ -305,11 +313,14 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                     dailydb.catalog = spinner.getSelectedItem().toString();
                     dailydb.date = getArguments().getInt("year") * 1000 + getArguments().getInt("month") * 100 + getArguments().getInt("day");
                     database.child("daily").child(Long.toString(dailydb.date)).child("2").child(cal.getTime().toString()).setValue(dailydb);
+
+                    Toast.makeText(v.getContext(), "등록되었습니다.", Toast.LENGTH_LONG).show();
                     dismiss();
                     break;
                 }
 
             case R.id.bt_cancel: //취소 버튼을 눌렀을 때
+                Toast.makeText(v.getContext(), "취소되었습니다.", Toast.LENGTH_LONG).show();
                 dismiss();
                 break;
         }
