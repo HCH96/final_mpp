@@ -3,6 +3,7 @@ package org.tech.mobileprogrammingproject.Daily;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
@@ -183,9 +185,9 @@ public class firstPage extends Fragment implements DatePickerDialog.OnDateSetLis
                         // 할 일의 완료 여부를 체크하는 Button 생성
                         Button cb = new Button(getContext());
                         cb.setGravity(Gravity.CENTER);
-                        cb.setPadding(3,10,3,10);
                         LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
                         params3.weight = 0.15f;
+                        cb.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ck_button));
                         cb.setLayoutParams(params3);
 
                         // 완료된 할 일 시각적으로 표시 (컬러가 아닌 회색조로 표현)
@@ -335,7 +337,7 @@ public class firstPage extends Fragment implements DatePickerDialog.OnDateSetLis
 
                         // 할 일의 완료 여부를 체크하는 Button 생성
                         Button cb = new Button(getContext());
-                        cb.setPadding(3,10,3,10);
+                        cb.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ck_button));
                         LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
                         params3.weight = 0.15f;
                         cb.setLayoutParams(params3);
