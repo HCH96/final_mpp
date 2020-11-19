@@ -148,18 +148,18 @@ public class Stats extends AppCompatActivity {
 
                                             // 그래프 세팅
                                             PieDataSet dataSet = new PieDataSet(yValues, "");
-                                            dataSet.setSliceSpace(3f); // 그래프 조각 사이 여백 설정
+                                            dataSet.setSliceSpace(2f); // 그래프 조각 사이 여백 설정
 
                                             // 그래프 색상 설정
                                             List<Integer> colors = new ArrayList<>();
-                                            colors.add(Color.parseColor("#0071CE"));
-                                            colors.add(Color.parseColor("#0084FF"));
-                                            colors.add(Color.parseColor("#3399FF"));
+                                            colors.add(Color.parseColor("#3C80CA"));
+                                            colors.add(Color.parseColor("#29A8E0"));
+                                            colors.add(Color.parseColor("#3E8DCC"));
+                                            colors.add(Color.parseColor("#4386FC"));
+                                            colors.add(Color.parseColor("#1769FF"));
                                             colors.add(Color.parseColor("#6383A8"));
                                             colors.add(Color.parseColor("#3863A0"));
                                             colors.add(Color.parseColor("#809CC9"));
-                                            colors.add(Color.parseColor("#3B5998"));
-                                            colors.add(Color.parseColor("#3E8DCC"));
                                             dataSet.setColors(colors);
 
                                             // PieChart에 표시되는 value값 형태 지정
