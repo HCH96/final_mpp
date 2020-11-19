@@ -28,11 +28,11 @@ import static org.tech.mobileprogrammingproject.Daily.firstPage.dateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-    /**
-      * secondPage.java
-      * 주요 기능 : 당일 완료한 일을 24시간제 원형 시간표로 표시
-      * Written by 한창희
-     */
+/**
+ * secondPage.java
+ * 주요 기능 : 당일 완료한 일을 24시간제 원형 시간표로 표시
+ * Written by 한창희
+ */
 
 public class secondPage extends Fragment {
 
@@ -152,10 +152,12 @@ public class secondPage extends Fragment {
 
                 //dataset 생성
                 PieDataSet pieDataSet = new PieDataSet(piedata, "오늘 한 일");
+                pieDataSet.setSelectionShift(5f);//pie chart 크기
 
                 pieDataSet.setValueLinePart1Length(0.6f);
                 pieDataSet.setValueLinePart2Length(0.3f);
                 pieDataSet.setValueLineWidth(2f);
+                pieDataSet.setValueLineVariableLength(true);
                 pieDataSet.setUsingSliceColorAsValueLineColor(true);
                 pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
                 pieDataSet.setValueTypeface(Typeface.DEFAULT_BOLD);
