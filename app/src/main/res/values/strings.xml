@@ -2,8 +2,12 @@
     <string name="app_name">MobileProgrammingProject</string>
     <string-array name="category_list">
         <item>미정</item>
-        <item>공부</item>
+        <item>수업</item>
         <item>과제</item>
+        <item>시험</item>
+        <item>공부</item>
+        <item>약속</item>
+        <item>알바</item>
         <item>운동</item>
     </string-array>
 </resources>
