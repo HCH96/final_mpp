@@ -1,6 +1,7 @@
 package org.tech.mobileprogrammingproject.Daily;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,6 +153,14 @@ public class secondPage extends Fragment {
                 //dataset 생성
                 PieDataSet pieDataSet = new PieDataSet(piedata, "오늘 한 일");
                 pieDataSet.setSelectionShift(5f);//pie chart 크기
+
+                pieDataSet.setValueLinePart1Length(0.6f);
+                pieDataSet.setValueLinePart2Length(0.3f);
+                pieDataSet.setValueLineWidth(2f);
+                pieDataSet.setValueLineVariableLength(true);
+                pieDataSet.setUsingSliceColorAsValueLineColor(true);
+                pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+                pieDataSet.setValueTypeface(Typeface.DEFAULT_BOLD);
 
                 //piedata에 color를 넘겨줌
                 pieDataSet.setColors(colors);
