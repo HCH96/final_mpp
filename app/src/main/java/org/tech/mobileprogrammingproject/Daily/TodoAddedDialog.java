@@ -150,14 +150,26 @@ public class TodoAddedDialog extends DialogFragment implements View.OnClickListe
                 case "미정":
                     spinner.setSelection(0);
                     break;
-                case "공부":
+                case "수업":
                     spinner.setSelection(1);
                     break;
                 case "과제":
                     spinner.setSelection(2);
                     break;
-                case "운동":
+                case "시험":
                     spinner.setSelection(3);
+                    break;
+                case "공부":
+                    spinner.setSelection(4);
+                    break;
+                case "약속":
+                    spinner.setSelection(5);
+                    break;
+                case "알바":
+                    spinner.setSelection(6);
+                    break;
+                case "운동":
+                    spinner.setSelection(7);
                     break;
             }
             return v;
