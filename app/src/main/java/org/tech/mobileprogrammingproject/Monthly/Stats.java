@@ -48,6 +48,11 @@ public class Stats extends AppCompatActivity {
     int category1_sumTime = 0; // category1(공부)의 시간합계를 저장할 변수
     int category2_sumTime = 0; // category2(과제)의 시간합계를 저장할 변수
     int category3_sumTime = 0; // category3(운동)의 시간합계를 저장할 변수
+    int category4_sumTime = 0; // category0(미정)의 시간합계를 저장할 변수
+    int category5_sumTime = 0; // category1(공부)의 시간합계를 저장할 변수
+    int category6_sumTime = 0; // category2(과제)의 시간합계를 저장할 변수
+    int category7_sumTime = 0; // category3(운동)의 시간합계를 저장할 변수
+
 
     // Firebase DatabaseReference
     DatabaseReference database = null;
@@ -100,12 +105,20 @@ public class Stats extends AppCompatActivity {
                                             // category 별로 분류하여 합계 시간을 누적하여 저장해줌
                                             if (doneDB.catalog.equals("미정"))
                                                 category0_sumTime += endTime - startTime;
-                                            else if (doneDB.catalog.equals("공부"))
+                                            else if (doneDB.catalog.equals("수업"))
                                                 category1_sumTime += endTime - startTime;
                                             else if (doneDB.catalog.equals("과제"))
                                                 category2_sumTime += endTime - startTime;
-                                            else if (doneDB.catalog.equals("운동"))
+                                            else if (doneDB.catalog.equals("시험"))
                                                 category3_sumTime += endTime - startTime;
+                                            else if (doneDB.catalog.equals("공부"))
+                                                category4_sumTime += endTime - startTime;
+                                            else if (doneDB.catalog.equals("약속"))
+                                                category5_sumTime += endTime - startTime;
+                                            else if (doneDB.catalog.equals("알바"))
+                                                category6_sumTime += endTime - startTime;
+                                            else if (doneDB.catalog.equals("운동"))
+                                                category7_sumTime += endTime - startTime;
 
                                             // pie chart 기본 옵션 설정
                                             pieChart.setUsePercentValues(false); // 퍼센트값을 제외한 실제 값으로 설정 (단위: 분)
@@ -122,9 +135,13 @@ public class Stats extends AppCompatActivity {
                                         */
                                             ArrayList<PieEntry> yValues = new ArrayList<>();
                                             if(category0_sumTime != 0) yValues.add(new PieEntry(category0_sumTime, "미정"));
-                                            if(category1_sumTime != 0) yValues.add(new PieEntry(category1_sumTime, "공부"));
+                                            if(category1_sumTime != 0) yValues.add(new PieEntry(category1_sumTime, "수업"));
                                             if(category2_sumTime != 0) yValues.add(new PieEntry(category2_sumTime, "과제"));
-                                            if(category3_sumTime != 0)yValues.add(new PieEntry(category3_sumTime, "운동"));
+                                            if(category3_sumTime != 0)yValues.add(new PieEntry(category3_sumTime, "시험"));
+                                            if(category4_sumTime != 0) yValues.add(new PieEntry(category4_sumTime, "공부"));
+                                            if(category5_sumTime != 0) yValues.add(new PieEntry(category5_sumTime, "약속"));
+                                            if(category6_sumTime != 0) yValues.add(new PieEntry(category6_sumTime, "알바"));
+                                            if(category7_sumTime != 0)yValues.add(new PieEntry(category7_sumTime, "운동"));
                                             // 데이터 추가 후 새로고침
                                             pieChart.notifyDataSetChanged();
                                             pieChart.invalidate();
@@ -135,10 +152,14 @@ public class Stats extends AppCompatActivity {
 
                                             // 그래프 색상 설정
                                             List<Integer> colors = new ArrayList<>();
-                                            colors.add(Color.parseColor("#809cc9"));
-                                            colors.add(Color.parseColor("#3b5998"));
-                                            colors.add(Color.parseColor("#8ca1af"));
-                                            colors.add(Color.parseColor("#607d8b"));
+                                            colors.add(Color.parseColor("#0071CE"));
+                                            colors.add(Color.parseColor("#0084FF"));
+                                            colors.add(Color.parseColor("#3399FF"));
+                                            colors.add(Color.parseColor("#6383A8"));
+                                            colors.add(Color.parseColor("#3863A0"));
+                                            colors.add(Color.parseColor("#809CC9"));
+                                            colors.add(Color.parseColor("#3B5998"));
+                                            colors.add(Color.parseColor("#3E8DCC"));
                                             dataSet.setColors(colors);
 
                                             // PieChart에 표시되는 value값 형태 지정
