@@ -141,15 +141,16 @@ public class firstPage extends Fragment implements DatePickerDialog.OnDateSetLis
                 itemIDArrayForRow.clear();
                 itemIDArrayForRow.add(new DailyDB());
                 showDaliyTodo.removeViews(1,showDaliyTodo.getChildCount() - 1);
-                dateTime = Integer.toString(dateDialog.getDatePicker().getYear() * 1000 + (dateDialog.getDatePicker().getMonth() + 1) * 100 + dateDialog.getDatePicker().getDayOfMonth());
+                dateTime = Integer.toString(dateDialog.getDatePicker().getYear() * 1000
+                        + (dateDialog.getDatePicker().getMonth() + 1) * 100 + dateDialog.getDatePicker().getDayOfMonth());
                 DataSnapshot today = snapshot.child(dateTime);
                 idx = 1;
 
                 for (int i = 0; i < 4; i++) {
                     /*
-                    i = 0 : 아침(radioButton01)
-                    i = 1 : 점심(radioButton02)
-                    i = 2 : 저녁(radioButton03)
+                    i = 0 : Group 1(radioButton01)
+                    i = 1 : Group 2(radioButton02)
+                    i = 2 : Group 3(radioButton03)
                     i = 3 : 완료된 할 일
                     */
                     DataSnapshot currData = today.child(Integer.toString(i));
@@ -300,9 +301,9 @@ public class firstPage extends Fragment implements DatePickerDialog.OnDateSetLis
 
                 for (int i = 0; i < 4; i++) {
                     /*
-                    i = 0 : 아침(radioButton01)
-                    i = 1 : 점심(radioButton02)
-                    i = 2 : 저녁(radioButton03)
+                    i = 0 : Group 1(radioButton01)
+                    i = 1 : Group 2(radioButton02)
+                    i = 2 : Group 3(radioButton03)
                     i = 3 : 완료된 할 일
                     */
                     DataSnapshot currData = today.child(Integer.toString(i));
