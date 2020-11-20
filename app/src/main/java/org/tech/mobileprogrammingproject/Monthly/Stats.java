@@ -45,13 +45,13 @@ public class Stats extends AppCompatActivity {
     //variables
     PieChart pieChart; // 차트 생성
     int category0_sumTime = 0; // category0(미정)의 시간합계를 저장할 변수
-    int category1_sumTime = 0; // category1(공부)의 시간합계를 저장할 변수
+    int category1_sumTime = 0; // category1(수업)의 시간합계를 저장할 변수
     int category2_sumTime = 0; // category2(과제)의 시간합계를 저장할 변수
-    int category3_sumTime = 0; // category3(운동)의 시간합계를 저장할 변수
-    int category4_sumTime = 0; // category0(미정)의 시간합계를 저장할 변수
-    int category5_sumTime = 0; // category1(공부)의 시간합계를 저장할 변수
-    int category6_sumTime = 0; // category2(과제)의 시간합계를 저장할 변수
-    int category7_sumTime = 0; // category3(운동)의 시간합계를 저장할 변수
+    int category3_sumTime = 0; // category3(시험)의 시간합계를 저장할 변수
+    int category4_sumTime = 0; // category4(공부)의 시간합계를 저장할 변수
+    int category5_sumTime = 0; // category5(약속)의 시간합계를 저장할 변수
+    int category6_sumTime = 0; // category6(알바)의 시간합계를 저장할 변수
+    int category7_sumTime = 0; // category7(운동)의 시간합계를 저장할 변수
 
 
     // Firebase DatabaseReference
@@ -122,11 +122,16 @@ public class Stats extends AppCompatActivity {
 
                                             // pie chart 기본 옵션 설정
                                             pieChart.setUsePercentValues(false); // 퍼센트값을 제외한 실제 값으로 설정 (단위: 분)
-                                            pieChart.getDescription().setEnabled(false); // 설명 레이블 제거
+//                                            pieChart.getDescription().setEnabled(false); // 설명 레이블 제거
                                             pieChart.setExtraOffsets(10, 10, 10, 5); // 차트 주위 여백 설정
                                             pieChart.setDrawHoleEnabled(false); // 차트 가운데 hole 제거
                                             pieChart.setTouchEnabled(false); // 애니메이션 제거
                                             pieChart.getLegend().setEnabled(false); // 범례 안 보이도록 설정
+
+                                            Description description = new Description();
+                                            description.setText("단위: 분"); //라벨
+                                            description.setTextSize(14);
+                                            pieChart.setDescription(description);
 
                                         /*
                                         통계 값 넣어주기
